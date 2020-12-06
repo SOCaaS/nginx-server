@@ -7,8 +7,7 @@ pipeline {
                 echo 'Building..'
                 sh 'echo ${BUILD_NUMBER}'
                 sh 'docker build -f dockerfile --tag nginx-server:${BUILD_NUMBER} .'
-                sh 'echo TAG=${BUILD_NUMBER} >> .env'
-                sh 'cat .env'
+                sh 'echo TAG=${BUILD_NUMBER} > .env'
            }
         }
         stage('Test') {

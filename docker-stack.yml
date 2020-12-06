@@ -6,7 +6,7 @@ services:
      image: nginx-server:${TAG}
      ports:
        - "80:80"
-      network:
+     network:
        - default
 networks:
   default:
