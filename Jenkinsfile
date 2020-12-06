@@ -7,7 +7,6 @@ pipeline {
                 echo 'Building..'
                 sh 'echo ${BUILD_NUMBER}'
                 sh 'docker build -f dockerfile --tag nginx-server:${BUILD_NUMBER} .'
-                sh 'echo TAG=${BUILD_NUMBER} > .env'
            }
         }
         stage('Test') {
@@ -20,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'docker stack deploy --compose-file docker-stack.yml nginx-proxy'
+                sh 'TAG=${BUILD_NUMBER} docker stack deploy --compose-file docker-stack.yml nginx-proxy'
             }
         }
     }
