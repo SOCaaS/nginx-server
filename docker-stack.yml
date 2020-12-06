@@ -1,0 +1,11 @@
+version: '3.3'
+  nginx:
+     image: nginx-server:${TAG}
+     ports:
+       - "80:80"
+      network:
+       - default
+networks:
+  default:
+    external: 
+       name: main-overlay
