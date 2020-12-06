@@ -7,8 +7,7 @@ services:
      ports:
        - "80:80"
      network:
-       - default
+       - main-overlay
 networks:
-  default:
-    external: 
-       name: main-overlay
+  main-overlay:
+    external: true
