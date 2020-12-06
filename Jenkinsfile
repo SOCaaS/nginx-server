@@ -5,15 +5,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'echo ${env.TAG_NAME}'
-                sh 'docker build -f dockerfile --tag nginx-server:${env.TAG_NAME} .'
-                sh 'echo TAG=${env.TAG_NAME} >> .env'
+                sh 'echo ${BUILD_NUMBER}'
+                sh 'docker build -f dockerfile --tag nginx-server:${BUILD_NUMBER} .'
+                sh 'echo TAG=${BUILD_NUMBER} >> .env'
            }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'docker run --name test-nginx nginx-server:${env.TAG_NAME} nginx -t'
+                sh 'docker run --name test-nginx nginx-server:${BUILD_NUMBER} nginx -t'
+                sh 'docker stop test-nginx && docker rm test-nginx'
             }
         }
         stage('Deploy') {
