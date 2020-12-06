@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'echo ${env.TAG_NAME}'
                 sh 'docker build -f dockerfile --tag nginx-server:${env.TAG_NAME} .'
                 sh 'echo TAG=${env.TAG_NAME} >> .env'
            }
