@@ -25,10 +25,10 @@ pipeline {
     }
     post {
         success {
-            discordSend description: "Jenkins Pipeline Build Success", footer: "Nginx Server", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: env.SOCAAS-WEBHOOK
+            discordSend description: "Jenkins Pipeline Build Success", footer: "Nginx Server", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: env.SOCAAS_WEBHOOK
         }
         failure {
-            discordSend description: "Jenkins Pipeline Build Failed", footer: "Nginx Server", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: env.SOCAAS-WEBHOOK
+            discordSend description: "Jenkins Pipeline Build Failed", footer: "Nginx Server", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: env.SOCAAS_WEBHOOK
         }
     }
 }
