@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh 'docker run --name test-nginx-${BUILD_NUMBER} --network main-overlay nginx-server:${BUILD_NUMBER} nginx -t'
-                sh 'docker rm test-nginx'
+                sh 'docker rm test-nginx-${BUILD_NUMBER}'
             }
         }
         stage('Deploy') {
