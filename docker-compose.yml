@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   nginx:
-    image: nginx-server:{TAG}
+    image: nginx-server:latest
     build:
       context: .
     ports:
